@@ -41,4 +41,16 @@ public class UserService {
     findById(id); // checks if user exists
     userRepository.deleteById(id);
   }
+
+  // "obj" from request 
+  public User update(User obj) {
+    User newUser = findById(obj.getId());
+    updateData(newUser, obj);
+    return userRepository.save(newUser);
+  }
+
+  private void updateData(User newUser, User obj) {
+    newUser.setName(obj.getName());
+    newUser.setEmail(obj.getEmail());
+  }
 }
