@@ -36,4 +36,9 @@ public class UserService {
     User user = new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     return user;
   }
+
+  public void delete(String id) {
+    findById(id); // checks if user exists
+    userRepository.deleteById(id);
+  }
 }
