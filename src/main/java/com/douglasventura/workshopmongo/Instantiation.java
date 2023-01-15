@@ -1,10 +1,7 @@
 package com.douglasventura.workshopmongo;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -42,6 +39,9 @@ public class Instantiation implements CommandLineRunner {
     Post post2 = new Post(null, Instant.parse("2018-03-23T00:00:00Z"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(alex));
 
     postRepository.saveAll(Arrays.asList(post1, post2));
+
+    maria.getPosts().addAll(Arrays.asList(post1, post2));
+    userRepository.save(maria);
 
   }
 
