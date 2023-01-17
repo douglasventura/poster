@@ -1,5 +1,6 @@
 package com.douglasventura.workshopmongo.services;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class PostService {
 
   public List<Post> findByTitle(String text) {
     return postRepository.findByTitle(text);
+  }
+
+  public List<Post> fullSearch(String text, Instant minDate, Instant maxDate) {
+    maxDate = maxDate.plusSeconds(60 * 60 * 24);
+    return postRepository.fullSearch(text, minDate, maxDate);
   }
 
 }
